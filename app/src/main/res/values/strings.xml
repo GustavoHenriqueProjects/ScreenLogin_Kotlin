@@ -7,4 +7,13 @@
     <string name="button">SIGN IN -></string>
     <string name="account">Don`t have an account?</string>
     <string name="signUp">Sign UP</string>
+    <string name="title_activity_main_sign_up">MainActivitySignUp</string>
+
+    <string name="subtitle_signUp">Create a new account</string>
+    <string name="Username">Username</string>
+    <string name="phone">Phone</string>
+    <string name="over">Over 18?</string>
+    <string name="button_createAccount">CREATE ACCOUNT</string>
+    <string name="have_account">Already have an account? </string>
+    <string name="signIn">Sign in</string>
 </resources>

@@ -1,5 +1,6 @@
 package com.example.interfacelogin
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
@@ -7,6 +8,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -16,6 +18,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -50,6 +53,18 @@ fun InterfaceLoginScreen() {
     var login_password by rememberSaveable {
         mutableStateOf("")
     }
+
+    /******************************************************************
+     * O Context é uma classe que fornece acesso a recursos do sistema,
+     * como serviços, atividades e layouts.
+     *
+     * LocalContext é uma forma de armazenar o Context atual em um
+     * local acessível aos componentes Compose.
+     *
+     * current é uma propriedade estatica que retorna o contexto
+     * associado ao Compose. Isso é usado para abrir outra tela.
+     ********************************************************************/
+    var openSignUp = LocalContext.current
 
     Surface(
         modifier = Modifier.fillMaxSize()
@@ -189,13 +204,14 @@ fun InterfaceLoginScreen() {
                             color = Color.White
                         )
                     }
-                    
+
                     Spacer(modifier = Modifier.height(30.dp))
 
                     Row(
                         modifier = Modifier
                             .fillMaxWidth(),
-                    horizontalArrangement = Arrangement.End) {
+                        horizontalArrangement = Arrangement.End
+                    ) {
                         Text(
                             text = stringResource(id = R.string.account),
                             fontSize = 20.sp,
@@ -204,15 +220,27 @@ fun InterfaceLoginScreen() {
                         Spacer(modifier = Modifier.width(10.dp))
                         Text(
                             text = stringResource(id = R.string.signUp),
-                            modifier = Modifier.padding(end = 40.dp),
+                            modifier = Modifier
+                                .padding(end = 40.dp)
+
+                                /*****************************************************
+                                 *  Intent cria um novo objeto e especifica para abrir
+                                 *   uma outra tela
+                                 ******************************************************/
+                                .clickable {
+                                    val openScreenSignUp =
+                                        Intent(openSignUp, MainActivitySignUp::class.java)
+                                    openSignUp.startActivity(openScreenSignUp)
+                                },
                             fontSize = 20.sp,
-                        color = Color(207, 6, 240)
+                            color = Color(207, 6, 240),
                         )
                     }
                 }
-                Column(modifier = Modifier.fillMaxSize(),
-                    verticalArrangement = Arrangement.Bottom
-                ,horizontalAlignment = Alignment.Start) {
+                Column(
+                    modifier = Modifier.fillMaxSize(),
+                    verticalArrangement = Arrangement.Bottom, horizontalAlignment = Alignment.Start
+                ) {
                     Column(
                         modifier = Modifier
                             .width(150.dp)

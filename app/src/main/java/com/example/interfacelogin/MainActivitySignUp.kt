@@ -20,6 +20,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -82,7 +83,7 @@ fun InterfaceLoginUp() {
                 ) {
                 }
             }
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(30.dp))
             Column(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalAlignment = Alignment.CenterHorizontally
@@ -188,8 +189,9 @@ fun InterfaceLoginUp() {
                             contentDescription = "",
                             modifier = Modifier.size(33.dp)
                         )
-                    }
-                )
+                    },
+                    visualTransformation = PasswordVisualTransformation()
+                    )
             }
             Column(
                 modifier = Modifier
@@ -210,6 +212,7 @@ fun InterfaceLoginUp() {
                         color = Color.Gray
                     )
                 }
+                Spacer(modifier = Modifier.height(20.dp))
                 Column( modifier = Modifier.fillMaxWidth()) {
                     Button(
                         onClick = { /*TODO*/ },
@@ -227,7 +230,7 @@ fun InterfaceLoginUp() {
                             color = Color.White
                         )
                     }
-                    Spacer(modifier = Modifier.height(13.dp))
+                    Spacer(modifier = Modifier.height(16.dp))
                     Row(modifier = Modifier
                         .fillMaxWidth(),
                         horizontalArrangement = Arrangement.End
